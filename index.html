@@ -8,6 +8,14 @@
 	<meta name="author" content="Matt Zanchelli" />
 	<meta name="viewport" content="width=576px" />
 	<link rel="shortcut icon" href="/favicon.ico">
+	<script>
+		// Set the body’s class to “dark” or “light” as appropriate.
+		document.addEventListener("DOMContentLoaded", function(event) { 
+			var hours = (new Date()).getHours();
+			var dark = (hours > 20 || hours < 6);
+			document.body.className = dark ? "dark" : "light";
+		});
+	</script>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
 	<style>
 		/* HTML5 Doctor CSS Reset */
@@ -38,6 +46,10 @@
 			text-rendering: optimizelegibility;
 			font-family: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
 		}
+
+		body.dark {
+			background-color: #1E1E1E; /* DARK */
+		}
 		
 		#vertical-centering-wrapper {
 			display: table;
@@ -51,6 +63,10 @@
 			box-sizing: border-box; 
 
 			padding-bottom: 16px;
+		}
+
+		.dark #vertical-centering-wrapper {
+			border-left: 8px solid #FFCC00; /* DARK */
 		}
 
 		#horizontal-centering-wrapper {
@@ -70,6 +86,10 @@
 			margin: auto;
 		}
 
+		.dark #content {
+			color: #4A4A4A; /* DARK */
+		}
+
 		#content p {
 			margin: 24px 0;
 		}
@@ -86,16 +106,32 @@
 			color: hsl(211, 10%, 10%);
 		}
 
+		.dark #content a {
+			color: #FFCC00; /* DARK */
+		}
+
 		#content a:visited {
 			color: hsl(211, 8%, 12%);
+		}
+
+		.dark #content a:visited {
+			color: #FFCC00; /* DARK */
 		}
 
 		#content a:hover {
 			color: hsl(130, 65%, 57%);
 		}
 
+		.dark #content a:hover {
+			color: #FFCC00; /* DARK */
+		}
+
 		#content a:active {
 			color: hsl(124, 90%, 44%);
+		}
+
+		.dark #content a:active {
+			color: #FFCC00; /* DARK */
 		}
 
 		#footer {
@@ -110,6 +146,10 @@
 			font-size: 11px;
 			line-height: 16px;
 		}
+
+		.dark #footer {
+			color: #2B2B2B; /* DARK */
+		}
 	</style>
 
 	<!-- Open Sans -->
@@ -119,7 +159,7 @@
 	<div id="vertical-centering-wrapper">
 		<div id="horizontal-centering-wrapper">
 			<div id="content">
-				<p>Hello! I'm <a href="http://mdznr.com/">Matt Zanchelli</a>.</p>
+				<p>Hello! I&apos;m <a href="http://mdznr.com/">Matt Zanchelli</a>.</p>
 				<p>I design and develop software <a href="http://apple.com/">professionally</a>.</p>
 				<p>I <a href="http://instagram.com/thinksdifferent">take photos</a> while hiking and biking<br />
 				and enjoy <a href="http://last.fm/user/blahblahmatt">listening to music</a>.</p>
@@ -180,12 +220,11 @@
 		});
 	}
 
-	$(function(){
-		window.onload = function() {
-			loadEmailLink();
-			hideContent();
-			fadeInContent();
-		};
+	document.addEventListener("DOMContentLoaded", function(event) { 
+		loadEmailLink();
+		hideContent();
+		fadeInContent();
 	});
+
 </script>
 </html>
